@@ -5,33 +5,25 @@ from beam_search import BeamSearch, Beam
 
 
 class Zero2Text:
-    def __init__(
-        self,
-        generator,
-        victim,
-        attacker,
-        aligner,
-        beam_search,
-        max_len=32,
-    ):
-        self.generator = generator
-        self.victim = victim
-        self.attacker = attacker
-        self.aligner = aligner
-        self.beam_search = beam_search
-        self.max_len = max_len
+  def __init__(self,generator,victim,attacker,aligner,beam_search,max_len=32):
+    self.generator = generator
+    self.victim = victim
+    self.attacker = attacker
+    self.aligner = aligner
+    self.beam_search = beam_search
+    self.max_len = max_len
 
-    def run(self, target_embedding, init_text=""):
-        self.beam_search.reset_state()
-        self.beam_search.target_embedding = target_embedding
+  def run(self, target_embedding, init_text=""):
+    self.beam_search.reset_state()
+    self.beam_search.target_embedding = target_embedding
 
-        beams = [Beam(init_text, 0.0)]
+    beams = [Beam(init_text, 0.0)]
 
-        for step in range(self.max_len):
-            beams = self.beam_search.step(beams, step, max_tokens=self.max_len)
-            print(f"Step {step}: {[b.text for b in beams]}")
+    for step in range(self.max_len):
+      beams = self.beam_search.step(beams, step, max_tokens=self.max_len)
+      print(f"Step {step}: {[b.text for b in beams]}")
 
-        return beams
+    return beams
 
 
 victim = VictimEmbedder()
