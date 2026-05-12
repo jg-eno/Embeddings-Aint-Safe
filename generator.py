@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 
 class Generator:
-  def __init__(self, model="Qwen/Qwen3-0.6B"):
+  def __init__(self, model="Qwen/Qwen2.5-1.5B"):
     self.tokenizer = AutoTokenizer.from_pretrained(model)
     self.model = AutoModelForCausalLM.from_pretrained(model)
     self.model.eval()
