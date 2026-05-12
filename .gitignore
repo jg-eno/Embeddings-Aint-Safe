@@ -1,2 +1,5 @@
 /__pycache__/
 /venv/
+/cuda_venv/
+/.venv/
+uv.lock

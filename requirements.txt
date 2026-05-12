@@ -1,9 +1,4 @@
-# PyTorch: default PyPI builds are CUDA 13.0 (+cu130) and need a newer driver than
-# many systems (driver reports CUDA 12.6 / "12060"). Use the CUDA 12.6 wheels instead.
---index-url https://download.pytorch.org/whl/cu126
---extra-index-url https://pypi.org/simple
-
-torch==2.11.0+cu126
-transformers
-sentence-transformers
-numpy
+torch==2.11.0
+transformers==5.8.0
+sentence-transformers==5.4.1
+numpy==2.4.4
