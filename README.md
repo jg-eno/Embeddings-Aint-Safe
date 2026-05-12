@@ -10,7 +10,7 @@ The goal is simple: given a **victim embedding** $e_v$, try to recover the origi
 - an online ridge-regression alignment matrix $W^t$
 - the paper's scoring $S(\cdot)$
 
-> ⚠️ This is still a prototype and the reconstructions are not good yet (see [Current Results](#current-results)).
+> This is still a prototype and the reconstructions are not good yet (see [Current Results](#current-results)).
 
 ---
 
@@ -33,20 +33,6 @@ The code follows Fig. 2 / Sec. 3.3–3.4 of the paper:
 $$S(e_i, t) = Z(y_i) + \text{conf}_t \cdot Z(\cos(e_i, e_v))$$
 
 where $y_i$ is the LLM score carried along the beam, $Z$ is z-score over the candidate pool, and $\text{conf}_t$ is Eq. 5 (with the paper's special-case scaling for $t=1$).
-
----
-
-## Project Structure
-
-```
-.
-├── main.py          # Runnable demo script
-├── beam_search.py   # Zero2Text loop (Fig. 2) + Eq. 4/5 scoring
-├── alingment.py     # Online ridge regression for W^t (Eq. 3)
-├── generator.py     # LLM next-token distribution, ASCII restriction,
-│                    # first-iteration logit penalty, empty init_text handling
-└── embedder.py      # Attacker + victim embedders
-```
 
 ---
 
@@ -102,7 +88,7 @@ Step 25: [
 ]
 ```
 
-The beam completely misses the target. Instead of converging on *"Isaac Newton discovered the law of gravity"*, the LLM prior dominates and steers every beam toward Q&A / template-style completions.
+The beam is converging near the target's embedding region, but the LLM's prior post-training dominates and steers every beam toward Q&A / template-style completions.
 
 ### Next Steps
 
