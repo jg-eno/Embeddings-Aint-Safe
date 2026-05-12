@@ -32,7 +32,7 @@ aligner = AlignmentModel(lambda_reg=0.1)
 
 generator = Generator()
 
-target_text = "Issac Newton discovered the law of gravity"
+target_text = "The white cat sat on the wall"
 target_embedding = victim.embed([target_text])[0]
 
 beam_search = BeamSearch(
