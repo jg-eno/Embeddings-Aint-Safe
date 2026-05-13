@@ -32,7 +32,7 @@ aligner = AlignmentModel(lambda_reg=0.1)
 
 generator = Generator()
 
-target_text = "The white cat sat on the wall"
+target_text = "Paris is the capital of France"
 target_embedding = victim.embed([target_text])[0]
 
 beam_search = BeamSearch(
@@ -42,7 +42,7 @@ beam_search = BeamSearch(
     aligner=aligner,
     target_embedding=target_embedding,
     beam_size=10,
-    K_S=15,
+    K_S=1000,
     K_A=50,
     gamma=0.8,
     T_hw=0.9,

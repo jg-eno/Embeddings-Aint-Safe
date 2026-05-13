@@ -8,12 +8,16 @@ class Generator:
   def __init__(self, model="Qwen/Qwen3-0.6B"):
     self.tokenizer = AutoTokenizer.from_pretrained(model)
     self.model = AutoModelForCausalLM.from_pretrained(model)
+    self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print("Generator Loading...")
+    print(f"Using device: {self.device}")
+    self.model.to(self.device)
+    print(f"Model : {model}")
     self.model.eval()
 
   def _lm_inputs(self, content):
-    device = next(self.model.parameters()).device
     enc = self.tokenizer(content, return_tensors="pt", add_special_tokens=False)
-    input_ids = enc["input_ids"].to(device)
+    input_ids = enc["input_ids"].to(self.device)
 
     if input_ids.shape[1] == 0:
       bos = getattr(self.model.config, "bos_token_id", None)
@@ -21,9 +25,9 @@ class Generator:
         bos = self.tokenizer.pad_token_id or self.tokenizer.eos_token_id
       if bos is None:
         raise ValueError("Empty prompt but no BOS/PAD/EOS token id.")
-      input_ids = torch.tensor([[bos]], dtype=torch.long, device=device)
+      input_ids = torch.tensor([[bos]], dtype=torch.long, device=self.device)
 
-    attention_mask = torch.ones_like(input_ids, device=device)
+    attention_mask = torch.ones_like(input_ids, device=self.device)
     return {"input_ids": input_ids, "attention_mask": attention_mask}
 
   def next_token_logprob(self, content):

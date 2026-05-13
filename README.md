@@ -61,7 +61,7 @@ Defaults from paper §4.1, set in `main.py`:
 
 ---
 
-## Current Results
+## 12-05-2026 Results
 
 The pipeline runs end-to-end, but beams drift into "prompty / Q&A / template" text rather than converging on the actual `target_text`.
 
@@ -90,6 +90,11 @@ Step 25: [
 
 The beam is converging near the target's embedding region, but the LLM's prior post-training dominates and steers every beam toward Q&A / template-style completions.
 
-### Next Steps
 
-Investigate why the scoring/alignment isn't pulling generations toward the target sentence and why the LLM prior dominates.
+## 13-05-2026 Results
+
+Target Text : The cat sat on the wall
+
+13th Generations : (beam_size=10, K_S=1000, K_A=50, gamma=0.8, T_hw=0.9, max_len=32, different attacter and victim embedding models)
+
+Step 13: ['QuestionDescription: Wally the white cat is sitting on a platform that', 'QuestionDescription: Wally the white cat is sitting on a floor.', 'QuestionDescription: Wally the white cat is sitting on a mat.', 'QuestionDescription: Wally the white cat is sitting quietly in a room', 'QuestionDescription: Wally the white cat is sitting on a bed.', 'QuestionDescription: Wally the white cat is sitting on a rectangular table', 'QuestionDescription: Wally the white cat is sitting on a rectangular floor', 'QuestionDescription: Wally the white cat is sitting on a window sill', 'QuestionDescription: Wally the white cat is sitting randomly on a chair', 'QuestionDescription: Wally the white cat is sitting on stairs. The']

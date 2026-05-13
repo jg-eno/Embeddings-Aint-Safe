@@ -3,3 +3,4 @@
 /cuda_venv/
 /.venv/
 uv.lock
+internals.py
