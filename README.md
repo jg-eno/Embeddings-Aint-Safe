@@ -93,8 +93,31 @@ The beam is converging near the target's embedding region, but the LLM's prior p
 
 ## 13-05-2026 Results
 
-Target Text : The cat sat on the wall
+### Target Text
+**The cat sat on the wall**
 
-13th Generations : (beam_size=10, K_S=1000, K_A=50, gamma=0.8, T_hw=0.9, max_len=32, different attacter and victim embedding models)
+---
 
-Step 13: ['QuestionDescription: Wally the white cat is sitting on a platform that', 'QuestionDescription: Wally the white cat is sitting on a floor.', 'QuestionDescription: Wally the white cat is sitting on a mat.', 'QuestionDescription: Wally the white cat is sitting quietly in a room', 'QuestionDescription: Wally the white cat is sitting on a bed.', 'QuestionDescription: Wally the white cat is sitting on a rectangular table', 'QuestionDescription: Wally the white cat is sitting on a rectangular floor', 'QuestionDescription: Wally the white cat is sitting on a window sill', 'QuestionDescription: Wally the white cat is sitting randomly on a chair', 'QuestionDescription: Wally the white cat is sitting on stairs. The']
+### Generation Settings
+- **Beam Size:** 10  
+- **K_S:** 1000  
+- **K_A:** 50  
+- **Gamma (γ):** 0.8  
+- **T_hw:** 0.9  
+- **Max Length:** 32  
+- **Models:** Different attacker and victim embedding models  
+
+---
+
+### Step 13 Generations
+
+1. QuestionDescription: Wally the white cat is sitting on a platform that  
+2. QuestionDescription: Wally the white cat is sitting on a floor.  
+3. QuestionDescription: Wally the white cat is sitting on a mat.  
+4. QuestionDescription: Wally the white cat is sitting quietly in a room  
+5. QuestionDescription: Wally the white cat is sitting on a bed.  
+6. QuestionDescription: Wally the white cat is sitting on a rectangular table  
+7. QuestionDescription: Wally the white cat is sitting on a rectangular floor  
+8. QuestionDescription: Wally the white cat is sitting on a window sill  
+9. QuestionDescription: Wally the white cat is sitting randomly on a chair  
+10. QuestionDescription: Wally the white cat is sitting on stairs. The  
